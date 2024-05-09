@@ -1,43 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:uribe0418/cliente.dart';
+import 'package:uribe0418/empleado.dart';
+import 'package:uribe0418/producto.dart';
+import 'package:uribe0418/sucursal.dart';
+import 'package:uribe0418/ventas.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static const String cliente = Cliente.routeName;
+  static const String empleado = Empleado.routeName;
+  static const String producto = Producto.routeName;
+  static const String sucursal = Sucursal.routeName;
+  static const String ventas = Ventas.routeName;
+  //static const String row_cinco = Row_cinco.routeName;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      debugShowCheckedModeBanner: false,
+      title: 'Ejemplo Drawer Menu',
       theme: ThemeData(
-        // useMaterial3: false,
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+      routes: {
+        cliente: (context) => Cliente(),
+        empleado: (context) => Empleado(),
+        producto: (context) => Producto(),
+        sucursal: (context) => Sucursal(),
+        ventas: (context) => Ventas(),
+        //  row_cinco: (context) => Row_cinco(),
+      },
+      home: Cliente(),
     );
   }
 }
